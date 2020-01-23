@@ -3,8 +3,11 @@ package com.hendisantika.springbootthymeleafsample.thymeleaf;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.thymeleaf.TemplateEngine;
+import org.thymeleaf.context.Context;
 
 /**
  * Created by IntelliJ IDEA.
@@ -30,4 +33,20 @@ public class ThymeleafTextTemplates {
         model.addAttribute(new Form());
         return "th-form";
     }
+
+    @PostMapping("/form")
+    public String postForm(@ModelAttribute Form form, Model model) {
+
+        Context context = new Context();
+        context.setVariable("name", form.getName());
+        context.setVariable("url", form.getUrl());
+        context.setVariable("tags", form.getTags().split(" "));
+
+        String text = textTemplateEngine.process("text-template", context);
+
+        model.addAttribute("text", text);
+
+        return "th-form";
+    }
+
 }
