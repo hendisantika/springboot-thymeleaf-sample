@@ -5,6 +5,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 
+import javax.servlet.http.HttpSession;
 import java.util.Arrays;
 import java.util.List;
 
@@ -33,5 +34,11 @@ class ThymeleafObjects {
     @GetMapping("/query-params")
     String queryParams() {
         return "redirect:/model-attr?q=My Query";
+    }
+
+    @GetMapping("/session-attr")
+    String sessionAttributes(HttpSession session) {
+        session.setAttribute("mySessionAttribute", "Session Attr 1");
+        return "th-objects";
     }
 }
