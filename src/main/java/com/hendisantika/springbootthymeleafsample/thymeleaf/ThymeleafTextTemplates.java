@@ -1,5 +1,7 @@
 package com.hendisantika.springbootthymeleafsample.thymeleaf;
 
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -8,6 +10,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.Context;
+import org.thymeleaf.templatemode.TemplateMode;
+import org.thymeleaf.templateresolver.ClassLoaderTemplateResolver;
+import org.thymeleaf.templateresolver.ITemplateResolver;
 
 /**
  * Created by IntelliJ IDEA.
@@ -47,6 +52,27 @@ public class ThymeleafTextTemplates {
         model.addAttribute("text", text);
 
         return "th-form";
+    }
+
+    @Configuration
+    public static class ThymeleafConfig {
+        @Bean(name = "textTemplateEngine")
+        public TemplateEngine textTemplateEngine() {
+            TemplateEngine templateEngine = new TemplateEngine();
+            templateEngine.addTemplateResolver(textTemplateResolver());
+            return templateEngine;
+        }
+
+        private ITemplateResolver textTemplateResolver() {
+            ClassLoaderTemplateResolver templateResolver = new ClassLoaderTemplateResolver();
+            templateResolver.setPrefix("/templates/text/");
+            templateResolver.setSuffix(".txt");
+            templateResolver.setTemplateMode(TemplateMode.TEXT /* https://github.com/thymeleaf/thymeleaf/issues/395 */);
+            templateResolver.setCharacterEncoding("UTF8");
+            templateResolver.setCheckExistence(true);
+            templateResolver.setCacheable(false);
+            return templateResolver;
+        }
     }
 
 }
