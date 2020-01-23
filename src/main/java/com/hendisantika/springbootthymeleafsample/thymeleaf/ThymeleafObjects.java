@@ -1,5 +1,7 @@
 package com.hendisantika.springbootthymeleafsample.thymeleaf;
 
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -47,6 +49,14 @@ class ThymeleafObjects {
     String flashAttributes(RedirectAttributes ra) {
         ra.addFlashAttribute("flash", "Flash Demo");
         return "redirect:/model-attr";
+    }
+
+    @Configuration
+    public class MyConfiguration {
+        @Bean(name = "urlService")
+        public UrlService urlService() {
+            return () -> "domain.com/myapp";
+        }
     }
 
 }
