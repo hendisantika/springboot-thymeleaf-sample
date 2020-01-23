@@ -46,4 +46,10 @@ public class AuditApplicationEventListener {
                 )
         );
     }
+
+    @EventListener(condition = "#event.auditEvent.type == 'CUSTOM_AUDIT_EVENT'")
+    @Async
+    public void onCustomAuditEvent(AuditApplicationEvent event) {
+        LOG.info("Handling custom audit event ...");
+    }
 }
