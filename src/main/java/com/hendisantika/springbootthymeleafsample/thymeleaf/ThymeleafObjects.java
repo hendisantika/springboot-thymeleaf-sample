@@ -29,4 +29,9 @@ class ThymeleafObjects {
     String modelAttributes(Model model) {
         return "th-objects";
     }
+
+    @GetMapping("/query-params")
+    String queryParams() {
+        return "redirect:/model-attr?q=My Query";
+    }
 }
