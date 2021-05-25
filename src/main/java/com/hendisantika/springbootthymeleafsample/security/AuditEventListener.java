@@ -3,6 +3,8 @@ package com.hendisantika.springbootthymeleafsample.security;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.actuate.audit.AuditEvent;
+import org.springframework.boot.actuate.audit.AuditEventRepository;
+import org.springframework.boot.actuate.audit.InMemoryAuditEventRepository;
 import org.springframework.boot.actuate.audit.listener.AbstractAuditListener;
 import org.springframework.stereotype.Component;
 
@@ -26,6 +28,8 @@ public class AuditEventListener extends AbstractAuditListener {
 //        this.auditEventRepository = auditEventRepository;
 //    }
 
+    private final AuditEventRepository auditEventRepository = new InMemoryAuditEventRepository();
+
     @Override
     protected void onAuditEvent(AuditEvent event) {
 
@@ -36,7 +40,7 @@ public class AuditEventListener extends AbstractAuditListener {
                 event.getData()
         );
 
-//        auditEventRepository.add(event);
+        auditEventRepository.add(event);
     }
 
 }

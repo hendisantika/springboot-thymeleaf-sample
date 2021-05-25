@@ -26,6 +26,7 @@
 
 		<webjars.bootstrap.version>3.3.7</webjars.bootstrap.version>
 		<webjars.jquery.version>3.2.1</webjars.jquery.version>
+		<webjars.webjars-locator.version>0.40</webjars.webjars-locator.version>
 	</properties>
 
 	<dependencies>
@@ -57,6 +58,10 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-actuator</artifactId>
 		</dependency>
+		<dependency>
+			<groupId>nz.net.ultraq.thymeleaf</groupId>
+			<artifactId>thymeleaf-layout-dialect</artifactId>
+		</dependency>
 		<!-- WebJars -->
 		<dependency>
 			<groupId>org.webjars</groupId>
@@ -68,7 +73,11 @@
 			<artifactId>jquery</artifactId>
 			<version>${webjars.jquery.version}</version>
 		</dependency>
-
+		<dependency>
+			<groupId>org.webjars</groupId>
+			<artifactId>webjars-locator</artifactId>
+			<version>${webjars.webjars-locator.version}</version>
+		</dependency>
 		<dependency>
 			<groupId>org.webjars</groupId>
 			<artifactId>webjars-locator</artifactId>
