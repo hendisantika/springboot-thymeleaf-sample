@@ -22,12 +22,6 @@ public class AuditEventListener extends AbstractAuditListener {
 
     private static final Logger LOG = LoggerFactory.getLogger(AuditEventListener.class);
 
-//    private final AuditEventRepository auditEventRepository;
-
-//    public AuditEventListener(AuditEventRepository auditEventRepository) {
-//        this.auditEventRepository = auditEventRepository;
-//    }
-
     private final AuditEventRepository auditEventRepository = new InMemoryAuditEventRepository();
 
     @Override

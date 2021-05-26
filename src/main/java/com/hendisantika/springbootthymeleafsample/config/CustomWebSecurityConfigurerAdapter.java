@@ -44,7 +44,6 @@ public class CustomWebSecurityConfigurerAdapter extends WebSecurityConfigurerAda
                 .antMatchers("/properties").permitAll()
                 .anyRequest().authenticated()
                 .and()
-                .httpBasic()
-                .realmName("Spring Boot Thymeleaf Sample");
+                .formLogin();
     }
 }
