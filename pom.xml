@@ -26,7 +26,7 @@
 
 		<webjars.bootstrap.version>5.0.0</webjars.bootstrap.version>
 		<webjars.jquery.version>3.7.1</webjars.jquery.version>
-		<webjars.webjars-locator.version>0.40</webjars.webjars-locator.version>
+		<webjars.webjars-locator.version>0.52</webjars.webjars-locator.version>
 	</properties>
 
 	<dependencies>
@@ -81,7 +81,7 @@
 		<dependency>
 			<groupId>org.webjars</groupId>
 			<artifactId>webjars-locator</artifactId>
-			<version>0.39</version>
+			<version>0.52</version>
 		</dependency>
 		<dependency>
 			<groupId>org.seleniumhq.selenium</groupId>
